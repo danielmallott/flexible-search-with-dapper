@@ -7,6 +7,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FlexibleSearchWithDapper.Da
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FlexibleSearchWithDapper.Database.Custom", "FlexibleSearchWithDapper.Database.Custom\FlexibleSearchWithDapper.Database.Custom.sqlproj", "{ADC59257-1D84-42D4-9923-FE10C4FA44E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexibleSearchWithDapper.Web", "FlexibleSearchWithDapper.Web\FlexibleSearchWithDapper.Web.csproj", "{0F27BBF6-0B49-487C-B8E9-FB856E124C83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{ADC59257-1D84-42D4-9923-FE10C4FA44E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADC59257-1D84-42D4-9923-FE10C4FA44E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ADC59257-1D84-42D4-9923-FE10C4FA44E4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0F27BBF6-0B49-487C-B8E9-FB856E124C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F27BBF6-0B49-487C-B8E9-FB856E124C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F27BBF6-0B49-487C-B8E9-FB856E124C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F27BBF6-0B49-487C-B8E9-FB856E124C83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
