@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +45,10 @@ namespace FlexibleSearchWithDapper.Web
                         Url = new Uri("https://twitter.com/danielmallott")
                     }
                 });
+
+                var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
+                c.IncludeXmlComments(xmlCommentsPath);
             });
         }
 
