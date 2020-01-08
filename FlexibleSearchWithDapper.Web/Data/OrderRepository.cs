@@ -17,7 +17,7 @@ namespace FlexibleSearchWithDapper.Web.Data
 
         private IDbConnection Connection
         {
-            get => new SqlConnection(this._configuration.GetConnectionString("default"));
+            get => new SqlConnection(this._configuration["ConnectionString:default"]);
         }
         
         public OrderRepository(IConfiguration configuration)
