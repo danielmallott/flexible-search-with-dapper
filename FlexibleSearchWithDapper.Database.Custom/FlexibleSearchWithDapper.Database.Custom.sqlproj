@@ -72,4 +72,7 @@
       <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
     </ArtifactReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sales\Stored Procedures\SearchOrders.sql" />
+  </ItemGroup>
 </Project>
