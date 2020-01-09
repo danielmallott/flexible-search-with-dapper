@@ -4,9 +4,15 @@ using Dapper.Contrib.Extensions;
 
 namespace FlexibleSearchWithDapper.Web.Models
 {
+    /// <summary>
+    /// Person Entity.
+    /// </summary>
     [Table("Application.People")]
     public class Person
     {
+        /// <summary>
+        /// Instantiates a new <see cref="Person"/>.
+        /// </summary>
         public Person()
         {
             BuyingGroups = new HashSet<BuyingGroup>();
@@ -52,70 +58,320 @@ namespace FlexibleSearchWithDapper.Web.Models
             TransactionTypes = new HashSet<TransactionType>();
         }
 
+        /// <summary>
+        /// Person Id. Primary Key for this entity.
+        /// </summary>
         [Key]
         public int PersonId { get; set; }
+        
+        /// <summary>
+        /// Full Name.
+        /// </summary>
         public string FullName { get; set; }
+        
+        /// <summary>
+        /// Preferred Name.
+        /// </summary>
         public string PreferredName { get; set; }
+        
+        /// <summary>
+        /// Search Name.
+        /// </summary>
         public string SearchName { get; set; }
+        
+        /// <summary>
+        /// Is Permitted to Logon.
+        /// </summary>
         public bool IsPermittedToLogon { get; set; }
+        
+        /// <summary>
+        /// Logon Name.
+        /// </summary>
         public string LogonName { get; set; }
+        
+        /// <summary>
+        /// Is External Logon Provider.
+        /// </summary>
         public bool IsExternalLogonProvider { get; set; }
+        
+        /// <summary>
+        /// Hashed Password.
+        /// </summary>
         public byte[] HashedPassword { get; set; }
+        
+        /// <summary>
+        /// Is System User.
+        /// </summary>
         public bool IsSystemUser { get; set; }
+        
+        /// <summary>
+        /// Is Employee.
+        /// </summary>
         public bool IsEmployee { get; set; }
+        
+        /// <summary>
+        /// Is Salesperson.
+        /// </summary>
         public bool IsSalesperson { get; set; }
+        
+        /// <summary>
+        /// User Preferences.
+        /// </summary>
         public string UserPreferences { get; set; }
+        
+        /// <summary>
+        /// Phone Number.
+        /// </summary>
         public string PhoneNumber { get; set; }
+        
+        /// <summary>
+        /// Fax Number.
+        /// </summary>
         public string FaxNumber { get; set; }
+        
+        /// <summary>
+        /// Email Address.
+        /// </summary>
         public string EmailAddress { get; set; }
+        
+        /// <summary>
+        /// Photo.
+        /// </summary>
         public byte[] Photo { get; set; }
+        
+        /// <summary>
+        /// Custom Fields.
+        /// </summary>
         public string CustomFields { get; set; }
+        
+        /// <summary>
+        /// Other Languages.
+        /// </summary>
         public string OtherLanguages { get; set; }
+        
+        /// <summary>
+        /// Last Edited By.
+        /// </summary>
         public int LastEditedBy { get; set; }
+        
+        /// <summary>
+        /// Valid From.
+        /// </summary>
         public DateTime ValidFrom { get; set; }
+        
+        /// <summary>
+        /// Valid To.
+        /// </summary>
         public DateTime ValidTo { get; set; }
 
-        public virtual Person LastEditedByNavigation { get; set; }
-        public virtual ICollection<BuyingGroup> BuyingGroups { get; set; }
-        public virtual ICollection<City> Cities { get; set; }
-        public virtual ICollection<Color> Colors { get; set; }
-        public virtual ICollection<Country> Countries { get; set; }
-        public virtual ICollection<CustomerCategory> CustomerCategories { get; set; }
-        public virtual ICollection<CustomerTransaction> CustomerTransactions { get; set; }
-        public virtual ICollection<Customer> CustomersAlternateContactPerson { get; set; }
-        public virtual ICollection<Customer> CustomersLastEditedByNavigation { get; set; }
-        public virtual ICollection<Customer> CustomersPrimaryContactPerson { get; set; }
-        public virtual ICollection<DeliveryMethod> DeliveryMethods { get; set; }
-        public virtual ICollection<Person> InverseLastEditedByNavigation { get; set; }
-        public virtual ICollection<InvoiceLine> InvoiceLines { get; set; }
-        public virtual ICollection<Invoice> InvoicesAccountsPerson { get; set; }
-        public virtual ICollection<Invoice> InvoicesContactPerson { get; set; }
-        public virtual ICollection<Invoice> InvoicesLastEditedByNavigation { get; set; }
-        public virtual ICollection<Invoice> InvoicesPackedByPerson { get; set; }
-        public virtual ICollection<Invoice> InvoicesSalespersonPerson { get; set; }
-        public virtual ICollection<OrderLine> OrderLines { get; set; }
-        public virtual ICollection<Order> OrdersContactPerson { get; set; }
-        public virtual ICollection<Order> OrdersLastEditedByNavigation { get; set; }
-        public virtual ICollection<Order> OrdersPickedByPerson { get; set; }
-        public virtual ICollection<Order> OrdersSalespersonPerson { get; set; }
-        public virtual ICollection<PackageType> PackageTypes { get; set; }
-        public virtual ICollection<PaymentMethod> PaymentMethods { get; set; }
-        public virtual ICollection<PurchaseOrderLine> PurchaseOrderLines { get; set; }
-        public virtual ICollection<PurchaseOrder> PurchaseOrdersContactPerson { get; set; }
-        public virtual ICollection<PurchaseOrder> PurchaseOrdersLastEditedByNavigation { get; set; }
-        public virtual ICollection<SpecialDeal> SpecialDeals { get; set; }
-        public virtual ICollection<StateProvince> StateProvinces { get; set; }
-        public virtual ICollection<StockGroup> StockGroups { get; set; }
-        public virtual ICollection<StockItemHolding> StockItemHoldings { get; set; }
-        public virtual ICollection<StockItemStockGroup> StockItemStockGroups { get; set; }
-        public virtual ICollection<StockItemTransaction> StockItemTransactions { get; set; }
-        public virtual ICollection<StockItem> StockItems { get; set; }
-        public virtual ICollection<SupplierCategory> SupplierCategories { get; set; }
-        public virtual ICollection<SupplierTransaction> SupplierTransactions { get; set; }
-        public virtual ICollection<Supplier> SuppliersAlternateContactPerson { get; set; }
-        public virtual ICollection<Supplier> SuppliersLastEditedByNavigation { get; set; }
-        public virtual ICollection<Supplier> SuppliersPrimaryContactPerson { get; set; }
-        public virtual ICollection<SystemParameter> SystemParameters { get; set; }
-        public virtual ICollection<TransactionType> TransactionTypes { get; set; }
+        /// <summary>
+        /// Last Edited By Navigation.
+        /// </summary>
+        public Person LastEditedByNavigation { get; set; }
+        
+        /// <summary>
+        /// Associated Buying Groups.
+        /// </summary>
+        public ICollection<BuyingGroup> BuyingGroups { get; set; }
+        
+        /// <summary>
+        /// Associated Cities.
+        /// </summary>
+        public ICollection<City> Cities { get; set; }
+        
+        /// <summary>
+        /// Associated Colors.
+        /// </summary>
+        public ICollection<Color> Colors { get; set; }
+        
+        /// <summary>
+        /// Associated Countries.
+        /// </summary>
+        public ICollection<Country> Countries { get; set; }
+        
+        /// <summary>
+        /// Associated Customer Categories.
+        /// </summary>
+        public ICollection<CustomerCategory> CustomerCategories { get; set; }
+        
+        /// <summary>
+        /// Associated Customer Transactions.
+        /// </summary>
+        public ICollection<CustomerTransaction> CustomerTransactions { get; set; }
+        
+        /// <summary>
+        /// Associated Customers Alternate Contact Person.
+        /// </summary>
+        public ICollection<Customer> CustomersAlternateContactPerson { get; set; }
+        
+        /// <summary>
+        /// Customers Last Edited By Navigation.
+        /// </summary>
+        public ICollection<Customer> CustomersLastEditedByNavigation { get; set; }
+        
+        /// <summary>
+        /// Associated Customers Primary Contact Person.
+        /// </summary>
+        public ICollection<Customer> CustomersPrimaryContactPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Delivery Methods.
+        /// </summary>
+        public ICollection<DeliveryMethod> DeliveryMethods { get; set; }
+        
+        /// <summary>
+        /// Inverse Last Edited By Navigation.
+        /// </summary>
+        public ICollection<Person> InverseLastEditedByNavigation { get; set; }
+        
+        /// <summary>
+        /// Associated Invoice Lines.
+        /// </summary>
+        public ICollection<InvoiceLine> InvoiceLines { get; set; }
+        
+        /// <summary>
+        /// Associated Invoice Accounts.
+        /// </summary>
+        public ICollection<Invoice> InvoicesAccountsPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Invoice Contact Person.
+        /// </summary>
+        public ICollection<Invoice> InvoicesContactPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Invoices Last Edited By.
+        /// </summary>
+        public ICollection<Invoice> InvoicesLastEditedByNavigation { get; set; }
+        
+        /// <summary>
+        /// Associated Invoices Packed By Person.
+        /// </summary>
+        public ICollection<Invoice> InvoicesPackedByPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Invoices Salesperson Person.
+        /// </summary>
+        public ICollection<Invoice> InvoicesSalespersonPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Order Lines.
+        /// </summary>
+        public ICollection<OrderLine> OrderLines { get; set; }
+        
+        /// <summary>
+        /// Associated Orders Contact Person.
+        /// </summary>
+        public ICollection<Order> OrdersContactPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Orders Lasted Edited By Navigation.
+        /// </summary>
+        public ICollection<Order> OrdersLastEditedByNavigation { get; set; }
+        
+        /// <summary>
+        /// Associated Orders Picked By Person.
+        /// </summary>
+        public ICollection<Order> OrdersPickedByPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Orders Salesperson Person.
+        /// </summary>
+        public ICollection<Order> OrdersSalespersonPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Package Types.
+        /// </summary>
+        public ICollection<PackageType> PackageTypes { get; set; }
+        
+        /// <summary>
+        /// Associated Payment Methods.
+        /// </summary>
+        public ICollection<PaymentMethod> PaymentMethods { get; set; }
+        
+        /// <summary>
+        /// Associated Purchase Order Lines.
+        /// </summary>
+        public ICollection<PurchaseOrderLine> PurchaseOrderLines { get; set; }
+        
+        /// <summary>
+        /// Associated Purchase Orders Contact Person.
+        /// </summary>
+        public ICollection<PurchaseOrder> PurchaseOrdersContactPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Purchase Orders Lasted Edited By Navigation.
+        /// </summary>
+        public ICollection<PurchaseOrder> PurchaseOrdersLastEditedByNavigation { get; set; }
+        
+        /// <summary>
+        /// Associated Special Deals.
+        /// </summary>
+        public ICollection<SpecialDeal> SpecialDeals { get; set; }
+        
+        /// <summary>
+        /// Associated State Provinces.
+        /// </summary>
+        public ICollection<StateProvince> StateProvinces { get; set; }
+        
+        /// <summary>
+        /// Associated Stock Groups.
+        /// </summary>
+        public ICollection<StockGroup> StockGroups { get; set; }
+        
+        /// <summary>
+        /// Associated Stock Item Holdings.
+        /// </summary>
+        public ICollection<StockItemHolding> StockItemHoldings { get; set; }
+        
+        /// <summary>
+        /// Associated Stock Item Stock Groups.
+        /// </summary>
+        public ICollection<StockItemStockGroup> StockItemStockGroups { get; set; }
+        
+        /// <summary>
+        /// Associated Stock Item Transactions.
+        /// </summary>
+        public ICollection<StockItemTransaction> StockItemTransactions { get; set; }
+        
+        /// <summary>
+        /// Associated Stock Items.
+        /// </summary>
+        public ICollection<StockItem> StockItems { get; set; }
+        
+        /// <summary>
+        /// Associated Supplier Categories.
+        /// </summary>
+        public ICollection<SupplierCategory> SupplierCategories { get; set; }
+        
+        /// <summary>
+        /// Associated Supplier Transactions.
+        /// </summary>
+        public ICollection<SupplierTransaction> SupplierTransactions { get; set; }
+        
+        /// <summary>
+        /// Associated Suppliers Alternate Contact Person.
+        /// </summary>
+        public ICollection<Supplier> SuppliersAlternateContactPerson { get; set; }
+        
+        /// <summary>
+        /// Associated Supplers Last Edited By Navigation.
+        /// </summary>
+        public ICollection<Supplier> SuppliersLastEditedByNavigation { get; set; }
+        
+        /// <summary>
+        /// Associated Suppliers Primary Contact Person.
+        /// </summary>
+        public ICollection<Supplier> SuppliersPrimaryContactPerson { get; set; }
+        
+        /// <summary>
+        /// Associated System Parameters.
+        /// </summary>
+        public ICollection<SystemParameter> SystemParameters { get; set; }
+        
+        /// <summary>
+        /// Associated Transaction Types.
+        /// </summary>
+        public ICollection<TransactionType> TransactionTypes { get; set; }
     }
 }

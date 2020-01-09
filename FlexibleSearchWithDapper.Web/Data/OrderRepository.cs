@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,20 +10,29 @@ using Microsoft.Extensions.Configuration;
 
 namespace FlexibleSearchWithDapper.Web.Data
 {
+    /// <summary>
+    /// Order Repository implementation.
+    /// </summary>
     public class OrderRepository : IOrderRepository
     {
-        private IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
-        private IDbConnection Connection
-        {
-            get => new SqlConnection(this._configuration["ConnectionString:default"]);
-        }
-        
+        private IDbConnection Connection => new SqlConnection(this._configuration["ConnectionString:default"]);
+
+        /// <summary>
+        /// Instantiates a new <see cref="OrderRepository"/> using the supplied parameters.
+        /// </summary>
+        /// <param name="configuration">Configuration to use.</param>
         public OrderRepository(IConfiguration configuration)
         {
             this._configuration = configuration;
         }
 
+        /// <summary>
+        /// Gets the Order with <paramref name="orderId"/>.
+        /// </summary>
+        /// <param name="orderId">Order Id.</param>
+        /// <returns>Order or <c>null</c> if none found.</returns>
         public Order GetOrder(int orderId)
         {
             using (var connection = Connection)
@@ -33,6 +41,10 @@ namespace FlexibleSearchWithDapper.Web.Data
             }
         }
 
+        /// <summary>
+        /// Gets all orders from the database.
+        /// </summary>
+        /// <returns>All Orders.</returns>
         public IEnumerable<Order> GetAllOrders()
         {
             using (var connection = Connection)
@@ -41,6 +53,11 @@ namespace FlexibleSearchWithDapper.Web.Data
             }
         }
 
+        /// <summary>
+        /// Creates a new order using the supplied <paramref name="order"/>.
+        /// </summary>
+        /// <param name="order">Order to create.</param>
+        /// <returns>Created Order.</returns>
         public Order CreateOrder(Order order)
         {
             using (var connection = Connection)
@@ -50,6 +67,11 @@ namespace FlexibleSearchWithDapper.Web.Data
             }
         }
 
+        /// <summary>
+        /// Searches Orders using the supplied <paramref name="searchModel"/>.
+        /// </summary>
+        /// <param name="searchModel">Search Model to use.</param>
+        /// <returns>Found records or <c>null</c> if none found.</returns>
         public IEnumerable<Order> SearchOrders(OrderSearchModel searchModel)
         {
             var mapper = new EntityOneToManyMapper<Order, OrderLine, int>()
@@ -68,19 +90,19 @@ namespace FlexibleSearchWithDapper.Web.Data
             
             
             var parameters = new DynamicParameters();
-            if (searchModel.CustomerID.HasValue)
+            if (searchModel.CustomerId.HasValue)
             {
-                parameters.Add("@customerID", searchModel.CustomerID.Value);
+                parameters.Add("@customerID", searchModel.CustomerId.Value);
             }
 
-            if (searchModel.SalesPersonID.HasValue)
+            if (searchModel.SalesPersonId.HasValue)
             {
-                parameters.Add("@salesPersonID", searchModel.SalesPersonID.Value);
+                parameters.Add("@salesPersonID", searchModel.SalesPersonId.Value);
             }
 
-            if (searchModel.ContactPersonID.HasValue)
+            if (searchModel.ContactPersonId.HasValue)
             {
-                parameters.Add("@contactPersonID", searchModel.ContactPersonID.Value);
+                parameters.Add("@contactPersonID", searchModel.ContactPersonId.Value);
             }
 
             if (searchModel.OrderDate.HasValue)
@@ -96,6 +118,16 @@ namespace FlexibleSearchWithDapper.Web.Data
             if (!string.IsNullOrWhiteSpace(searchModel.CustomerPurchaseOrderNumber))
             {
                 parameters.Add("@customerPurchaseOrderNumber", searchModel.CustomerPurchaseOrderNumber);
+            }
+
+            if (searchModel.StockItemId.HasValue)
+            {
+                parameters.Add("@stockItemID", searchModel.StockItemId.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(searchModel.Description))
+            {
+                parameters.Add("@description", searchModel.Description);
             }
 
             if (searchModel.Quantity.HasValue)
