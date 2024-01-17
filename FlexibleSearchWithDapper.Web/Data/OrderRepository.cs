@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using FlexibleSearchWithDapper.Web.Core;
 using FlexibleSearchWithDapper.Web.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Data.SqlClient;
 
 namespace FlexibleSearchWithDapper.Web.Data
 {
@@ -87,8 +87,8 @@ namespace FlexibleSearchWithDapper.Web.Data
                 },
                 ParentKey = (order) => order.OrderId
             };
-            
-            
+
+
             var parameters = new DynamicParameters();
             if (searchModel.CustomerId.HasValue)
             {
