@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="FlexibleSearchWithDapper.Database.Base/FlexibleSearchWithDapper.Database.Base.sqlproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="FlexibleSearchWithDapper.Database.Custom/FlexibleSearchWithDapper.Database.Custom.sqlproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="FlexibleSearchWithDapper.Web/FlexibleSearchWithDapper.Web.csproj" />
+</Solution>
